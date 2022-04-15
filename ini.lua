@@ -45,4 +45,12 @@ function ini.stringify(t)
   return s
 end
 
+function ini.load(path)
+  local file = io.open(path, "r")
+  if not file then return false end
+  local t = ini.parse(file:read "*a")
+  file:close()
+  return t
+end
+
 return ini
